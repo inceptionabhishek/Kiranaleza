@@ -11,13 +11,13 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Chip, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
 import CardComponentofItems from "./CardComponentofItems";
 import { useState, useEffect, useRef } from "react";
-
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 import * as tt from "@tomtom-international/web-sdk-maps";
 const api = "http://localhost:5000/api/shopowners/getowner";
-
 
 function Dashboard() {
   const mapElement = useRef();
@@ -36,7 +36,6 @@ function Dashboard() {
         setMapLongitude(res.data.user.Lng);
         setMapLatitude(res.data.user.Lat);
         updateMap();
-       
       });
   }, []);
 
@@ -48,7 +47,7 @@ function Dashboard() {
       zoom: mapZoom,
     });
     setMap(map);
-    
+
     return () => map.remove();
   }, []);
   const updateMap = () => {
@@ -74,44 +73,43 @@ function Dashboard() {
                     <React.Fragment>
                       <CardContent>
                         <Typography
-                          sx={{ fontSize: 14 }}
+                          sx={{ fontSize: 20 }}
                           color="text.secondary"
                           gutterBottom
                         >
                           Your Details
                         </Typography>
+                        <img
+                          src={owner.shoppic}
+                          alt="Logo"
+                          className="shop-pic"
+                        />
                         <Typography variant="h5" component="div">
                           <Chip label="Shop Name" /> : {owner.name}'s Shop
                         </Typography>
+                        <br />
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                          <b>Tag Line : </b> {owner.tagline}
-                        </Typography>
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                          <b> Email :</b> {owner.email}
+                          <Chip label="Tag Line: " /> {owner.tagline}
                         </Typography>
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                          <b>Location of Shop :</b> {owner.location}
+                          <Chip label="Email: " /> {owner.email}
+                        </Typography>
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                          <Chip label="Location : " /> {owner.location}
                         </Typography>
                         <Typography variant="body2">
-                          <b>
-                            <i>Total Orders Done : {owner.totalorders}</i>
-                          </b>
+                          <Chip label="Total Money Earned :" />{" "}
+                          {owner.totalmoney}
                         </Typography>
                         <Typography variant="body2">
-                          <b>
-                            <i>Total Money Earned : {owner.totalmoney}</i>
-                          </b>
-                        </Typography>
-                        <Typography variant="body2">
-                          <b>
-                            <i>Total Items in the shop : {owner.totalitems}</i>
-                          </b>
+                          <Chip label="Total Items : " />{" "}
+                          {owner.TotalItemsCount}
                         </Typography>
                       </CardContent>
                       <Typography variant="body2">
-                        <b>
-                          <i>City Name : {owner.city}</i>
-                        </b>
+                        <Link to="/owner/myshop">
+                          <LocationOnIcon /> {owner.city}
+                        </Link>
                       </Typography>
                       <CardActions>
                         <Button size="small">Edit Profile</Button>
@@ -154,6 +152,7 @@ function Dashboard() {
           )}
 
           <h1 className="Top-Heading">Your Shop Location</h1>
+
           <div ref={mapElement} className="container mapDiv" />
         </div>
       </div>
