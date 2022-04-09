@@ -1,0 +1,36 @@
+.Location-Div {
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  height: auto;
+}
+.Maps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Location-Info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-behavior: smooth;
+  margin: 2px;
+}
+
+.mapContainer {
+  margin-top: 25px;
+}
+
+.mapDiv {
+  height: 500px;
+}
+
+.mapZoomDisplay {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.updateButton {
+  margin-top: 20px;
+}

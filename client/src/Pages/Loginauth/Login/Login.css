@@ -1,0 +1,22 @@
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+.login-container {
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+.Login {
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+}
+.Login-Cat {
+  height: 200px;
+  
+}
+.login-Cat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

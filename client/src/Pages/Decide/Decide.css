@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@880&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hurricane&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.Top-Heading {
+  text-align: center;
+  font-size: 50px;
+  font-family: "Lexend", sans-serif;
+  cursor: pointer;
+}
+.Decide {
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+}

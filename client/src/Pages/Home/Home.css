@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@880&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hurricane&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+.Logo-Display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  background-color: black;
+}
+.Button-Get-started {
+  background-color: #ffc107;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.Image-Footed-Products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Logo {
+  height: 100px;
+}
+.Logo-Text {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+.Main-Logo-Display-Div {
+  background-color: black;
+  text-align: center;
+}
+.Div-Divider {
+  height: 10px;
+  background-color: rgb(149, 231, 17);
+}
+.Display-Content-1 {
+  height: 500px;
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+}
+.Display-Content-1-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.Display-Content-1-left-text {
+  color: rgb(0, 0, 0);
+  font-size: 60px;
+  font-weight: bold;
+  font-family: "Lexend", sans-serif;
+}
+.Basket {
+  height: 300px;
+}
+.Display-Content-1-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.title {
+  color: rgb(0, 0, 0);
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Lexend", sans-serif;
+}
+.Display-Content-2 {
+  height: 400px;
+  background-color: rgb(240, 214, 68);
+}
+.Display-Context-2-header {
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Lexend", sans-serif;
+}
+.links {
+  text-decoration: none;
+  color: #ffc107;
+}
+.Do-Desc {
+  color: #525146;
+}
+.Display-Content-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background-color: rgb(0, 0, 0);
+}
+.Product-Image {
+  height: 220px;
+}
+.Display-Content-3 {
+  height: auto;
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+}
+.Display-Content-3-left-text {
+  color: rgb(0, 0, 0);
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Lexend", sans-serif;
+  text-align: center;
+}
+.Cities-Desc {
+  display: flex;
+  justify-content: center;
+}
+.India-Travel {
+  height: 300px;
+}
+.Div-Divider2 {
+  height: 10px;
+  background-color: rgb(5, 4, 3);
+  border-radius: 50%;
+}
+.City-Image {
+  height: 200px;
+  object-fit: cover;
+}
+.City-Title {
+  font-family: "Hurricane", cursive;
+}
+.Customers-Review {
+  height: auto;
+  background-color: #393e46;
+}
+.Customer-Rewiew-Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+@media screen and (max-width: 600px) {
+  .Display-Content-1-left-text {
+    font-size: 40px;
+  }
+  .Basket {
+    height: 230px;
+  }
+  .Display-Content-2 {
+    height: auto;
+  }
+  .Display-Content-4 {
+    align-items: center;
+    display: block;
+  }
+  .Product-Image {
+    height: 140px;
+  }
+  .Display-Content-3 {
+    height: auto;
+  }
+  .Customers-Review {
+    height: auto;
+  }
+  .City-Image {
+    height: 200px;
+  }
+}
+.Customer-Image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgb(199, 202, 17);
+}
+.Display-Content-3-left-text-2 {
+  color: rgb(231, 182, 21);
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Lexend", sans-serif;
+  text-align: center;
+}
+.Customer-Name {
+  color: rgb(231, 182, 21);
+}
+.review {
+  color: rgb(231, 182, 21);
+  font-size: 20px;
+  font-family: "Pacifico", cursive;
+}
+@media screen and (max-width: 1000px) {
+  .City-Image {
+    height: 150px;
+  }
+}
+
+.Footer {
+  background-color: #393e46;
+  height: auto;
+  color: rgb(231, 182, 21);
+  font-size: 20px;
+}
