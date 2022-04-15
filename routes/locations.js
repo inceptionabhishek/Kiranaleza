@@ -6,7 +6,7 @@ const locationschema = require("../models/locations");
 router.post("/location/add", (req, res) => {
   locationschema
     .findOne({
-      NameofPlace: req.body.NameofPlace,
+      Nameofcity: req.body.NameofPlace,
     })
     .then((city) => {
       if (city) {

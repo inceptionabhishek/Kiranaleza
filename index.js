@@ -18,7 +18,7 @@ connection.once("open", () => {
 
 app.use("/api/shopowners", require("./routes/shopowners"));
 app.use("/api", require("./routes/locations"));
-
+app.use('/customers', require('./routes/customers'));
 app.listen(PORT, () => {
   console.log("Server is running on port and this is amazing ::  " + PORT);
 });

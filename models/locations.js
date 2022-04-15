@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-
-
 const locationschema = new Schema({
   Nameofplace: String,
   Lat: Number,

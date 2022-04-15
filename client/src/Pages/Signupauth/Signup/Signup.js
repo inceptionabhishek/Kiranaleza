@@ -8,15 +8,57 @@ import UnLoggedNavbar from "../../../components/Navbar/UnLoggedNavbar";
 import Footer from "../../../components/Footer";
 import Cat from "../../../Assets/Images/SignupCar.png";
 function Signup() {
-  const [username, setUsername] = useState("");
+  const [address, setAddress] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [image, setImage] = useState("");
+  const [Image, setImage] = useState("");
   const [password, setPassword] = useState("");
   const [allvalues, setAllvalues] = useState(false);
   const [uploaded, setUploaded] = useState(false);
-  const handleFormSubmit = () => {};
-  const HandlerFunction = () => {};
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (name === "" || email === "" || Image === "" || password === "") {
+      setAllvalues(true);
+    } else {
+      axios
+        .post("http://localhost:5000/customers/add", {
+          Name: name,
+          profilepic: Image,
+          email: email,
+          password: password,
+          Address: address,
+          TotalBoughtItems: 0,
+          FavouriateShops: [],
+          BuyingHistory: [],
+          MyCart: [],
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+  };
+  const HandlerFunction = async () => {
+    if (Image === "") {
+      setAllvalues(true);
+    } else {
+      setUploaded(true);
+      const formData = new FormData();
+      formData.append("file", Image);
+      formData.append("upload_preset", "CheggClone");
+      formData.append("cloud_name", "dkeiewkz6");
+      await fetch("https://api.cloudinary.com/v1_1/dkeiewkz6/image/upload", {
+        method: "post",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setImage(data.url);
+          console.log(data.url);
+          setUploaded(false);
+        });
+    }
+    setUploaded(false);
+  };
   return (
     <div className="Signup">
       <UnLoggedNavbar />
@@ -44,17 +86,7 @@ function Signup() {
                       onChange={(event) => setName(event.target.value)}
                     />
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">UserName</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="userNameId"
-                      aria-describedby="userNameHelp"
-                      placeholder="Enter Your UserName"
-                      onChange={(event) => setUsername(event.target.value)}
-                    />
-                  </div>
+
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email </label>
                     <input
@@ -64,6 +96,17 @@ function Signup() {
                       aria-describedby="userNameHelp"
                       placeholder="Enter Your UserName"
                       onChange={(event) => setEmail(event.target.value)}
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="Address"
+                      aria-describedby="Address"
+                      placeholder="Enter Your Address"
+                      onChange={(event) => setAddress(event.target.value)}
                     />
                   </div>
                   <div class="form-group">

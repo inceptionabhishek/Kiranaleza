@@ -47,7 +47,8 @@ function SignupOwner() {
           shopinfo: {
             Shopname: shopName,
             Ownername: nameOfowner,
-            ShopLocation: adress,
+            Lat: lat,
+            Lng: lng,
           },
         })
         .then((res) => {
@@ -79,7 +80,7 @@ function SignupOwner() {
             localStorage.setItem("TypeofUser", "ShopOwner");
             localStorage.setItem("email", email);
             localStorage.setItem("login", true);
-            //window.location.href = "/owner/myshop";
+            window.location.href = "/owner/myshop";
           } else {
             alert(res.data.message);
           }
@@ -245,7 +246,7 @@ function SignupOwner() {
 
                   <label>Select Your City</label>
                   <Form.Control as="select" custom onChange={citychangehandle}>
-                    <option value="Kolkata">kolkata</option>
+                    <option value="Kolkata">Kolkata</option>
                     <option value="Delhi">Delhi</option>
                     <option value="Benguluru">Benguluru</option>
                     <option value="Chennai">Chennai</option>
