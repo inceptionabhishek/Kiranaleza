@@ -7,6 +7,8 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import UnLoggedNavbar from "../../../components/Navbar/UnLoggedNavbar";
 import Footer from "../../../components/Footer";
 import Cat from "../../../Assets/Images/SignupCar.png";
+
+
 function Signup() {
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
@@ -15,27 +17,39 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [allvalues, setAllvalues] = useState(false);
   const [uploaded, setUploaded] = useState(false);
+  const [City, setCity] = useState("");
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (name === "" || email === "" || Image === "" || password === "") {
       setAllvalues(true);
     } else {
       axios
-        .post("http://localhost:5000/customers/add", {
+        .post("http://localhost:5000/customers/register", {
           Name: name,
           profilepic: Image,
           email: email,
           password: password,
           Address: address,
+          City: City,
           TotalBoughtItems: 0,
           FavouriateShops: [],
           BuyingHistory: [],
           MyCart: [],
         })
         .then((res) => {
-          console.log(res);
+          if (res.data.message === "User Created") {
+            localStorage.setItem("TypeofUser", "Customer");
+            localStorage.setItem("email", email);
+            localStorage.setItem("login", true);
+            window.location.href = "/customer/dashboard";
+          } else {
+            console.log(res.data);
+          }
         });
     }
+  };
+  const citychangehandle = (e) => {
+    setCity(e.target.value);
   };
   const HandlerFunction = async () => {
     if (Image === "") {
@@ -133,6 +147,7 @@ function Signup() {
                     <Button variant="primary" onClick={HandlerFunction}>
                       Upload Image to database
                     </Button>
+
                     {uploaded === true ? (
                       <button variant="primary" disabled>
                         <Spinner
@@ -148,6 +163,15 @@ function Signup() {
                       <></>
                     )}
                   </div>
+                  <label>Select Your City</label>
+                  <Form.Control as="select" custom onChange={citychangehandle}>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Benguluru">Benguluru</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                  </Form.Control>
                   {allvalues === true ? (
                     <>
                       <div class="alert">

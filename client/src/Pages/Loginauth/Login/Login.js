@@ -4,11 +4,29 @@ import UnLoggedNavbar from "../../../components/Navbar/UnLoggedNavbar";
 import Footer from "../../../components/Footer";
 import "./Login.css";
 import LoginCat from "../../../Assets/Images/LoginCat.png";
+import axios from "axios";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
-  const handleFormSubmit = () => {};
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/customers/verify", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        if (res.data.message === "User Verified") {
+          localStorage.setItem("TypeofUser", "Customer");
+          localStorage.setItem("email", email);
+          localStorage.setItem("login", true);
+          window.location.href = "/customer/dashboard";
+        } else {
+          setAlert(true);
+        }
+      });
+  };
   return (
     <div className="Login">
       <UnLoggedNavbar />

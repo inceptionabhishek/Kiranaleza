@@ -1,40 +1,27 @@
 const express = require("express");
 const router = express.Router();
-const locationschema = require("../models/locations");
-
-// Add New shop in given location
-router.post("/location/add", (req, res) => {
-  locationschema
-    .findOne({
-      Nameofcity: req.body.NameofPlace,
-    })
-    .then((city) => {
-      if (city) {
-        city.Shops.push(req.body.shopinfo);
-        city.save();
-        res.status(200).send({
-          message: "Shop Added",
-          city: city,
-        });
-      } else {
-        res.status(404).send({
-          message: "City not found",
-        });
-      }
-    });
-});
-
-// Shops for a specific location
-router.post("/locationinfo", async (req, res) => {
-  const CityName = req.body.CityName;
-  await locationschema
-    .findOne({ NameofPlace: CityName })
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
+const Locations = require("../models/locations");
+// Add a New Shop in Location
+router.route("/add/shops").post((req, res) => {
+  Locations.findOne({ Nameofcity: req.body.Nameofcity }).then((location) => {
+    if (location) {
+      location.Shops.push({
+        Shopname: req.body.Shopname,
+        Ownername: req.body.Ownername,
+        Lat: req.body.Lat,
+        Lng: req.body.Lng,
+      });
+      location.save().then((location) => res.json(location));
+    } else {
+      const newLocation = new Locations({
+        Nameofcity: req.body.Nameofcity,
+        Lat: req.body.Lat,
+        Lng: req.body.Lng,
+        Shops: [req.body.shopinfo],
+      });
+      newLocation.save().then((location) => res.json(location));
+    }
+  });
 });
 
 module.exports = router;

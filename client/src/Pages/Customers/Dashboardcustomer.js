@@ -4,13 +4,25 @@ import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import Data from "./RandomBuyingQuotes";
 import { useState, useEffect } from "react";
-import { Spinner, Container, Row, Col,Card,Button } from "react-bootstrap";
+import axios from "axios";
+import { Spinner, Container, Row, Col, Card, Button } from "react-bootstrap";
 function Dashboardcustomer() {
   const random = Math.floor(Math.random() * Data.length);
   const [quote, setQuote] = useState(Data[random]);
   const [loading, setLoading] = useState(true);
-
   const [cat, setCat] = useState("");
+  const [customerDetails, setCustomerDetails] = useState({});
+  useEffect(() => {
+    axios
+      .post("http://localhost:5000/customers/get", {
+        email: localStorage.getItem("email"),
+      })
+      .then((res) => {
+        setCustomerDetails(res.data.user);
+        console.log(res.data.user);
+      });
+  }, []);
+
   useEffect(() => {
     fetch("https://api.thecatapi.com/v1/images/search")
       .then((res) => res.json())
@@ -24,7 +36,7 @@ function Dashboardcustomer() {
       <CustomerNavbar />
       <div className="Full-Width">
         <div className="Myshop container">
-          <h1 className="Top-Heading">Hello, Abhishek Kumar!❤</h1>
+          <h1 className="Top-Heading">Hello, {customerDetails.Name}❤</h1>
           <Container>
             <Row>
               <Col md={6}>
@@ -49,19 +61,26 @@ function Dashboardcustomer() {
                   <Card style={{ width: "18rem" }}>
                     <Card.Img
                       variant="top"
-                      src="https://randomuser.me/api/portraits/men/98.jpg"
+                      src={customerDetails.profilepic}
                       className="Card-Image"
                     />
                     <Card.Body>
                       <Card.Title>Your Details</Card.Title>
                       <Card.Text>
-                        <b> Name : </b>Abhishek kumar
+                        <b> Name : </b>
+                        {" " + customerDetails.Name}
                       </Card.Text>
                       <Card.Text>
-                        <b> Location : </b>Kolkata
+                        <b> Location : </b>
+                        {" " + customerDetails.Address}
                       </Card.Text>
                       <Card.Text>
-                        <b> Total Bought Items Amount : </b>1600 RS
+                        <b> City : </b>
+                        {" " + customerDetails.City}
+                      </Card.Text>
+                      <Card.Text>
+                        <b> Total Bought Items Amount : </b>{" "}
+                        {customerDetails.TotalBoughtItems} RS
                       </Card.Text>
                       <Button variant="primary">Edit Profile</Button>
                     </Card.Body>
@@ -70,7 +89,6 @@ function Dashboardcustomer() {
               </Col>
             </Row>
           </Container>
-
           <h2 className="Top-Heading">
             Visit our <Link to="/customer/exploreshops">shops</Link> to see our
             latest products!🍸🌟🍺

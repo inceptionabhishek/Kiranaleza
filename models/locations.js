@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const locationschema = new Schema({
-  Nameofplace: String,
+  Nameofcity: String,
   Lat: Number,
   Lng: Number,
   Shops: [
@@ -15,5 +15,4 @@ const locationschema = new Schema({
   ],
 });
 
-
-module.exports= mongoose.model("locationschema",locationschema);
+module.exports = mongoose.model("locationschema", locationschema);

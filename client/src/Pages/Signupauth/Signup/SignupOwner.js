@@ -25,8 +25,29 @@ function SignupOwner() {
   const [Thumbnail, setThumbnail] = useState("");
   const [adress, setAdress] = useState("");
   const [status, setStatus] = useState(null);
+  const [cityLat, setCityLat] = useState("");
+  const [cityLng, setCityLng] = useState("");
   const citychangehandle = (e) => {
     setCity(e.target.value);
+    if (city === "Kolkata") {
+      cityLat = 22.5726;
+      cityLng = 88.3639;
+    } else if (city === "Delhi") {
+      cityLat = 28.7041;
+      cityLng = 77.1025;
+    } else if (city === "Mumbai") {
+      cityLat = 19.076;
+      cityLng = 72.8777;
+    } else if (city === "Bangalore") {
+      cityLat = 12.9716;
+      cityLng = 77.5946;
+    } else if (city === "Chennai") {
+      cityLat = 13.0827;
+      cityLng = 80.2707;
+    } else if (city === "Rajasthan") {
+      cityLat = 27.0238;
+      cityLng = 74.2179;
+    }
   };
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -41,9 +62,12 @@ function SignupOwner() {
       tagline.length > 0
     ) {
       console.log(city);
+
       await axios
-        .post("http://localhost:5000/api/location/add", {
+        .post("http://localhost:5000/api/add/shops", {
           NameofPlace: city,
+          Lat: cityLat,
+          Lng: cityLng,
           shopinfo: {
             Shopname: shopName,
             Ownername: nameOfowner,
