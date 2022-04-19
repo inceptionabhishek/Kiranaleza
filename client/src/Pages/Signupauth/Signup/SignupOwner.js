@@ -25,28 +25,28 @@ function SignupOwner() {
   const [Thumbnail, setThumbnail] = useState("");
   const [adress, setAdress] = useState("");
   const [status, setStatus] = useState(null);
-  const [cityLat, setCityLat] = useState("");
-  const [cityLng, setCityLng] = useState("");
+  const [cityLat, setCityLat] = useState("22.5726");
+  const [cityLng, setCityLng] = useState("88.3639");
   const citychangehandle = (e) => {
     setCity(e.target.value);
     if (city === "Kolkata") {
-      cityLat = 22.5726;
-      cityLng = 88.3639;
+      setCityLat("22.5726");
+      setCityLng("88.3639");
     } else if (city === "Delhi") {
-      cityLat = 28.7041;
-      cityLng = 77.1025;
+      setCityLat("28.7041");
+      setCityLng("77.1025");
     } else if (city === "Mumbai") {
-      cityLat = 19.076;
-      cityLng = 72.8777;
+      setCityLat("19.076");
+      setCityLng("72.8777");
     } else if (city === "Bangalore") {
-      cityLat = 12.9716;
-      cityLng = 77.5946;
+      setCityLat("12.9716");
+      setCityLng("77.5946");
     } else if (city === "Chennai") {
-      cityLat = 13.0827;
-      cityLng = 80.2707;
+      setCityLat("13.0827");
+      setCityLng("80.2707");
     } else if (city === "Rajasthan") {
-      cityLat = 27.0238;
-      cityLng = 74.2179;
+      setCityLat("27.0238");
+      setCityLng("74.2179");
     }
   };
   const handleFormSubmit = async (e) => {
@@ -62,18 +62,16 @@ function SignupOwner() {
       tagline.length > 0
     ) {
       console.log(city);
-
       await axios
         .post("http://localhost:5000/api/add/shops", {
-          NameofPlace: city,
+          Nameofcity: city,
           Lat: cityLat,
           Lng: cityLng,
-          shopinfo: {
-            Shopname: shopName,
-            Ownername: nameOfowner,
-            Lat: lat,
-            Lng: lng,
-          },
+          Shopname: shopName,
+          email: email,
+          Ownername: nameOfowner,
+          shopLat: lat,
+          shopLng: lng,
         })
         .then((res) => {
           console.log(res);
@@ -234,14 +232,14 @@ function SignupOwner() {
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">
-                      Enter Your Shop's Adress
+                      Enter Your Shop's Address
                     </label>
                     <input
                       type="text"
                       class="form-control"
                       id="userNameId"
                       aria-describedby="userNameHelp"
-                      placeholder="Adress"
+                      placeholder="Address"
                       onChange={(event) => setAdress(event.target.value)}
                     />
                   </div>

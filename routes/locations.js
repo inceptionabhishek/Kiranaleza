@@ -8,8 +8,9 @@ router.route("/add/shops").post((req, res) => {
       location.Shops.push({
         Shopname: req.body.Shopname,
         Ownername: req.body.Ownername,
-        Lat: req.body.Lat,
-        Lng: req.body.Lng,
+        email: req.body.email,
+        shopLat: req.body.shopLat,
+        shopLng: req.body.shopLng,
       });
       location.save().then((location) => res.json(location));
     } else {
@@ -17,7 +18,15 @@ router.route("/add/shops").post((req, res) => {
         Nameofcity: req.body.Nameofcity,
         Lat: req.body.Lat,
         Lng: req.body.Lng,
-        Shops: [req.body.shopinfo],
+        Shops: [
+          {
+            Shopname: req.body.Shopname,
+            Ownername: req.body.Ownername,
+            email: req.body.email,
+            shopLat: req.body.shopLat,
+            shopLng: req.body.shopLng,
+          },
+        ],
       });
       newLocation.save().then((location) => res.json(location));
     }
