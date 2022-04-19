@@ -9,8 +9,9 @@ const locationschema = new Schema({
     {
       Shopname: String,
       Ownername: String,
-      Lat: Number,
-      Lng: Number,
+      email: String,
+      shopLat: Number,
+      shopLng: Number,
     },
   ],
 });
