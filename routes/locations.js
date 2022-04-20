@@ -32,5 +32,12 @@ router.route("/add/shops").post((req, res) => {
     }
   });
 });
+// Get shops For a Location city
+router.route("/get/shop").post((req, res) => {
+  const city = req.body.city;
+  Locations.findOne({ Nameofcity: city }).then((location) => {
+    res.json(location);
+  });
+});
 
 module.exports = router;
