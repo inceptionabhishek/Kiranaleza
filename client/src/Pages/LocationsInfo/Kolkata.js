@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 import * as tt from "@tomtom-international/web-sdk-maps";
+import axios from "axios";
 
 const MAX_ZOOM = 17;
 function Kolkata() {
@@ -18,18 +19,20 @@ function Kolkata() {
   const [mapZoom, setMapZoom] = useState(13);
   const [map, setMap] = useState({});
   const [loading, setLoading] = useState(true);
+  const [Kolkata, setKolkata] = useState([]);
+  useEffect(() => {
+    
+  }, []);
   const increaseZoom = () => {
     if (mapZoom < MAX_ZOOM) {
       setMapZoom(mapZoom + 1);
     }
   };
-
   const decreaseZoom = () => {
     if (mapZoom > 1) {
       setMapZoom(mapZoom - 1);
     }
   };
-
   const updateMap = () => {
     map.setCenter([parseFloat(mapLongitude), parseFloat(mapLatitude)]);
     map.setZoom(mapZoom);
@@ -47,7 +50,6 @@ function Kolkata() {
     });
     setMap(map);
 
-    console.log(map);
     return () => map.remove();
   }, []);
   return (
