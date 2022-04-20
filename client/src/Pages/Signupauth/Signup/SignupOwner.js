@@ -29,22 +29,22 @@ function SignupOwner() {
   const [cityLng, setCityLng] = useState("88.3639");
   const citychangehandle = (e) => {
     setCity(e.target.value);
-    if (city === "Kolkata") {
+    if (e.target.value === "Kolkata") {
       setCityLat("22.5726");
       setCityLng("88.3639");
-    } else if (city === "Delhi") {
+    } else if (e.target.value === "Delhi") {
       setCityLat("28.7041");
       setCityLng("77.1025");
-    } else if (city === "Mumbai") {
+    } else if (e.target.value === "Mumbai") {
       setCityLat("19.076");
       setCityLng("72.8777");
-    } else if (city === "Bangalore") {
+    } else if (e.target.value === "Bangalore") {
       setCityLat("12.9716");
       setCityLng("77.5946");
-    } else if (city === "Chennai") {
+    } else if (e.target.value === "Chennai") {
       setCityLat("13.0827");
       setCityLng("80.2707");
-    } else if (city === "Rajasthan") {
+    } else if (e.target.value === "Rajasthan") {
       setCityLat("27.0238");
       setCityLng("74.2179");
     }
@@ -61,7 +61,7 @@ function SignupOwner() {
       Thumbnail !== "" &&
       tagline.length > 0
     ) {
-      console.log(city);
+      console.log(cityLat, cityLng);
       await axios
         .post("http://localhost:5000/api/add/shops", {
           Nameofcity: city,
@@ -102,7 +102,7 @@ function SignupOwner() {
             localStorage.setItem("TypeofUser", "ShopOwner");
             localStorage.setItem("email", email);
             localStorage.setItem("login", true);
-            window.location.href = "/owner/myshop";
+            // window.location.href = "/owner/myshop";
           } else {
             alert(res.data.message);
           }
