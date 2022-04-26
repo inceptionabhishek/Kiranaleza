@@ -26,7 +26,7 @@ function Exploreshops() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [shops, location]);
 
   return (
     <>
@@ -34,16 +34,16 @@ function Exploreshops() {
       <div className="Full-Width">
         <div className="Myshop container">
           <h1 className="Top-Heading">Explore Shops in {location}</h1>
-          {shops.map((shop) => {
-            return (
-              <Grid
-                container
-                spacing={3}
-                direction="row"
-                justify="center"
-                alignItems="center"
-                padding="2px"
-              >
+          <Grid
+            container
+            spacing={3}
+            direction="row"
+            justify="center"
+            alignItems="center"
+            padding="2px"
+          >
+            {shops.map((shop) => {
+              return (
                 <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
                   <Box
                     display="flex"
@@ -75,9 +75,9 @@ function Exploreshops() {
                     <Button className="Button">Add to Favourite Shop</Button>
                   </Box>
                 </Grid>
-              </Grid>
-            );
-          })}
+              );
+            })}
+          </Grid>
         </div>
       </div>
       <Footer />

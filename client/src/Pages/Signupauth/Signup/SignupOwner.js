@@ -62,23 +62,7 @@ function SignupOwner() {
       tagline.length > 0
     ) {
       console.log(cityLat, cityLng);
-      await axios
-        .post("http://localhost:5000/api/add/shops", {
-          Nameofcity: city,
-          Lat: cityLat,
-          Lng: cityLng,
-          Shopname: shopName,
-          email: email,
-          Ownername: nameOfowner,
-          shopLat: lat,
-          shopLng: lng,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+
       await axios
         .post("http://localhost:5000/api/shopowners/register", {
           name: nameOfowner,
@@ -99,10 +83,27 @@ function SignupOwner() {
         })
         .then((res) => {
           if (res.data.message === "User Created") {
+            axios
+              .post("http://localhost:5000/api/add/shops", {
+                Nameofcity: city,
+                Lat: cityLat,
+                Lng: cityLng,
+                Shopname: shopName,
+                email: email,
+                Ownername: nameOfowner,
+                shopLat: lat,
+                shopLng: lng,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
             localStorage.setItem("TypeofUser", "ShopOwner");
             localStorage.setItem("email", email);
             localStorage.setItem("login", true);
-            // window.location.href = "/owner/myshop";
+            window.location.href = "/owner/myshop";
           } else {
             alert(res.data.message);
           }
