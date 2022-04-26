@@ -64,15 +64,20 @@ router.post("/get", async (req, res) => {
 
 // Get customers data:-
 router.route("/getcustomers").post((req, res) => {
-  customer.find({
-    email: req.body.email,
-  }, (err, data) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(data);
+  customer.find(
+    {
+      email: req.body.email,
+    },
+    (err, data) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(data);
+      }
     }
-  });
+  );
 });
+// Add shop to favourite
+router.post("/addfav", async (req, res) => {});
 
 module.exports = router;
