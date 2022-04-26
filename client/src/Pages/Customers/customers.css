@@ -1,33 +1,42 @@
 .Full-Width {
   background-color: black;
 }
-.Quote-Container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.Quote-Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.Cat-Container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.Cat-Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.cat{
-    height: 200px;
-    width: 200px;
+.cat {
+  height: 200px;
+  width: 200px;
 }
-.Card-Container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.Card-Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.Card-Image{
-    height: 240px;
-    width: 18rem;
+.Card-Image {
+  height: 240px;
+  width: 18rem;
 }
-.Button{
-    background-color: bisque;
-    color: black;
+.Button {
+  background-color: bisque;
+  color: black;
+}
+.spinner-border {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

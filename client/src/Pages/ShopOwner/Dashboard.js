@@ -26,6 +26,7 @@ function Dashboard() {
   const [mapZoom, setMapZoom] = useState(13);
   const [map, setMap] = useState({});
   const [owner, setOwner] = useState([]);
+
   useEffect(() => {
     axios
       .post(api, {
@@ -50,6 +51,22 @@ function Dashboard() {
 
     return () => map.remove();
   }, []);
+  // var marker = new tt.Marker()
+  //   .setLngLat([mapLongitude, mapLatitude])
+  //   .addTo(map);
+  // const addMarker = () => {
+  //   const targetCoordinates = [mapLongitude, mapLatitude];
+  //   const marker = new tt.Marker().setLngLat(targetCoordinates).addTo(map);
+  // };
+  // var popupOffsets = {
+  //   top: [0, 0],
+  //   bottom: [0, -50],
+  //   left: [25, -35],
+  //   right: [-25, -35],
+  // };
+
+  // var popup = new tt.Popup({ offset: popupOffsets }).setHTML("djdj");
+  // marker.setPopup(popup);
   const updateMap = () => {
     map.setCenter([parseFloat(mapLongitude), parseFloat(mapLatitude)]);
     map.setZoom(mapZoom);

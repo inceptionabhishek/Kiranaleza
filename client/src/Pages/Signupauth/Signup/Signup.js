@@ -8,7 +8,6 @@ import UnLoggedNavbar from "../../../components/Navbar/UnLoggedNavbar";
 import Footer from "../../../components/Footer";
 import Cat from "../../../Assets/Images/SignupCar.png";
 
-
 function Signup() {
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
@@ -41,6 +40,7 @@ function Signup() {
             localStorage.setItem("TypeofUser", "Customer");
             localStorage.setItem("email", email);
             localStorage.setItem("login", true);
+            localStorage.setItem("location", City);
             window.location.href = "/customer/dashboard";
           } else {
             console.log(res.data);
